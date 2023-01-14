@@ -1,0 +1,17 @@
+* {
+  font-family: 'Urbanist', 'Roboto', sans-serif !important;
+  margin: 0;
+  text-decoration: none !important;
+}
+
+a:visited {
+  color: black;
+}
+a {
+  color: black;
+}
+body {
+  margin: 0 auto;
+  padding: 0 !important;
+  overflow: auto !important;
+}
