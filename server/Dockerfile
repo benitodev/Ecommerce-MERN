@@ -8,6 +8,7 @@ COPY package*.json ./
 RUN npm install
 
 RUN npm i -g nodemon@latest
+RUN npm install mongoose
 
 COPY . .
 

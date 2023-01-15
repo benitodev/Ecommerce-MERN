@@ -1,3 +1,6 @@
+show databases
+show
+show dbs
 db.carts.find()
 show collections
 use ecommerce

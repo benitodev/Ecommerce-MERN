@@ -1,18 +1,17 @@
-version: '3.9'
+version: '3.8'
 
 services:
   # MongoDB service
   ecommerce_db:
-    image: mongo
+    image: mongo:latest
     restart: always
-    # environment:
-    #   - MONGO_INITDB_ROOT_USERNAME=root
-    #   - MONGO_INITDB_ROOT_PASSWORD=password
     ports:
       - 2717:27017
     volumes:
       - ./server/mongo-volume:/data/db
-      # - ecommerce_db:/data/db
+    networks:
+      - ecommerce-backend
+
   # Node API service
   ecommerce_api:
     container_name: ecommerce_api
@@ -21,13 +20,17 @@ services:
     ports:
       - 3000:3002
     environment:
-      PORT: 3002
-      DB_URI: mongodb://ecommerce_db:27017/
-      DB_URI_DOCKER: mongodb://ecommerce_db:27017/
-      DB_NAME: ecommerce
-      JWT_SECRET: secret-token
+      - PORT=3002
+      - DB_URI=mongodb://ecommerce_db:27017/
+      - DB_URI_DOCKER=mongodb://ecommerce_db:27017/
+      - DB_NAME=ecommerce
+      - JWT_SECRET=secret-token
+
     depends_on:
       - ecommerce_db
+    networks:
+      - ecommerce-backend
+
   # Frontend App
   react_app:
     container_name: react-app
@@ -38,21 +41,11 @@ services:
       - 5000:5173
     stdin_open: true
     tty: true
-  # Mongo GUI
-  # mongo-express:
-  #   image: mongo-express:latest
-  #   container_name: mongo_express
-  #   restart: always
-  #   ports:
-  #     - 8081:8081
-  #   environment:
-  #     - ME_CONFIG_MONGODB_ADMINUSERNAME=root
-  #     - ME_CONFIG_MONGODB_ADMINPASSWORD=password
-  #     - ME_CONFIG_MONGODB_SERVER=ecommerce_db
 
 volumes:
   mongo-volume:
     driver: local
-# networks:
-#   ecommerce-backend:
-#     driver: bridge
+
+networks:
+  ecommerce-backend:
+    driver: bridge
