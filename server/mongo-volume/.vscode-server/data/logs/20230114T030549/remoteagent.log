@@ -1,0 +1,7 @@
+2023-01-14 03:05:49.615 [info] Extension host agent started.
+2023-01-14 03:05:49.927 [debug] ComputeTargetPlatform: linux-x64
+2023-01-14 03:05:49.939 [info] Started initializing default profile extensions in extensions installation folder. file:///data/db/.vscode-server/extensions
+2023-01-14 03:05:49.941 [info] [127.0.0.1][ab17f404][ManagementConnection] New connection established.
+2023-01-14 03:05:49.952 [info] [127.0.0.1][78ca39dc][ExtensionHostConnection] New connection established.
+2023-01-14 03:05:49.983 [info] [127.0.0.1][78ca39dc][ExtensionHostConnection] <279> Launched Extension Host Process.
+2023-01-14 03:05:50.174 [info] Completed initializing default profile extensions in extensions installation folder. file:///data/db/.vscode-server/extensions

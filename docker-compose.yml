@@ -11,7 +11,7 @@ services:
     ports:
       - 2717:27017
     volumes:
-      - ./mongo-volume:/data/db
+      - ./server/mongo-volume:/data/db
       # - ecommerce_db:/data/db
   # Node API service
   ecommerce_api:
