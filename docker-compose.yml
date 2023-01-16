@@ -22,7 +22,6 @@ services:
     environment:
       - PORT=3002
       - DB_URI=mongodb://ecommerce_db:27017/
-      - DB_URI_DOCKER=mongodb://ecommerce_db:27017/
       - DB_NAME=ecommerce
       - JWT_SECRET=secret-token
 
