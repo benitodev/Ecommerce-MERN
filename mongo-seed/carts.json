@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "63c54428f5c110fc697828dd"
+  },
+  "user": {
+    "$oid": "63c54428f5c110fc697828db"
+  },
+  "products": [
+    {
+      "product": {
+        "title": "Lisa Yang",
+        "description": "Holly cashmere striped jumper",
+        "url": "https://cdn-images.farfetch-contents.com/18/94/19/98/18941998_42011048_1000.jpg",
+        "category": [
+          "clothes"
+        ],
+        "price": 500,
+        "id": "6390e48df965ec1321465c1b",
+        "size": "S",
+        "color": "red"
+      },
+      "quantity": 2,
+      "_id": {
+        "$oid": "63c54466f5c110fc697828e5"
+      }
+    }
+  ],
+  "__v": 0
+}]

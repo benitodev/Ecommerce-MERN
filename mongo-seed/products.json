@@ -1,0 +1,210 @@
+[{
+  "_id": {
+    "$oid": "6390e2ddb1507ec88d178deb"
+  },
+  "title": "Shirt Off-white",
+  "description": "Arrows-motif T-shirt",
+  "url": "https://cdn-images.farfetch-contents.com/18/53/23/63/18532363_41139449_1000.jpg",
+  "stock": 54,
+  "category": [
+    "clothes"
+  ],
+  "price": 200,
+  "size": [
+    "S",
+    "L",
+    "XL"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390e48df965ec1321465c1b"
+  },
+  "title": "Lisa Yang",
+  "description": "Holly cashmere striped jumper",
+  "url": "https://cdn-images.farfetch-contents.com/18/94/19/98/18941998_42011048_1000.jpg",
+  "stock": 2,
+  "category": [
+    "clothes"
+  ],
+  "price": 500,
+  "size": [
+    "S",
+    "M",
+    "L"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390e584f965ec1321465c1d"
+  },
+  "title": "Balenciaga",
+  "description": "Padded checked shirt",
+  "url": "https://cdn-images.farfetch-contents.com/18/48/09/28/18480928_40388478_1000.jpg",
+  "stock": 2,
+  "category": [
+    "clothes"
+  ],
+  "price": 500,
+  "size": [
+    "XS",
+    "S",
+    "M"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390e6f62d54e44e61b03646"
+  },
+  "title": "Marni",
+  "description": "striped round-neck jumper",
+  "url": "https://cdn-images.farfetch-contents.com/19/35/44/16/19354416_42505201_1000.jpg",
+  "stock": 12,
+  "category": [
+    "Clothes"
+  ],
+  "price": 800,
+  "size": [
+    "L",
+    "XL"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390e7c02d54e44e61b03648"
+  },
+  "title": "ZIMMERMANN",
+  "description": "Zodiac Star Girls dress",
+  "url": "https://cdn-images.farfetch-contents.com/18/90/87/08/18908708_41160015_1000.jpg",
+  "stock": 12,
+  "category": [
+    "clothes",
+    "dress"
+  ],
+  "price": 1600,
+  "size": [
+    "S",
+    "M",
+    "L"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390e85f2d54e44e61b0364a"
+  },
+  "title": "Blumarine",
+  "description": "floral appliqué-detail minidress",
+  "url": "https://cdn-images.farfetch-contents.com/19/28/28/42/19282842_42336921_1000.jpg",
+  "stock": 12,
+  "category": [
+    "clothes",
+    "dress"
+  ],
+  "price": 1600,
+  "size": [
+    "S",
+    "M",
+    "L"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390e8862d54e44e61b0364c"
+  },
+  "title": "Dion Lee",
+  "description": "cut-out ribbed dress",
+  "url": "https://cdn-images.farfetch-contents.com/18/41/88/17/18418817_41448719_1000.jpg",
+  "stock": 12,
+  "category": [
+    "clothes",
+    "dress"
+  ],
+  "price": 1600,
+  "size": [
+    "S",
+    "M",
+    "L"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390e945ea1f74d8a11825c8"
+  },
+  "title": "Dolce & Gabbana",
+  "description": "floral-print thigh-high boots",
+  "url": "https://cdn-images.farfetch-contents.com/19/26/26/76/19262676_42262176_1000.jpg",
+  "stock": 1,
+  "category": [
+    "shoes"
+  ],
+  "price": 950,
+  "size": [
+    "36"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390e9eb1db1b2ac386077ea"
+  },
+  "title": "Chelsea",
+  "description": "Bulldozer Chelsea ankle boots",
+  "url": "https://cdn-images.farfetch-contents.com/19/23/77/22/19237722_42330457_1000.jpg",
+  "stock": 16,
+  "category": [
+    "shoes"
+  ],
+  "price": 340,
+  "size": [
+    "36",
+    "37",
+    "38"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390ea3b1db1b2ac386077ec"
+  },
+  "title": "AMIRI",
+  "description": "M.A. Court high-top sneakers",
+  "url": "https://cdn-images.farfetch-contents.com/19/34/87/16/19348716_42529270_1000.jpg",
+  "stock": 43,
+  "category": [
+    "shoes"
+  ],
+  "price": 400,
+  "size": [
+    "36",
+    "37",
+    "38",
+    "40"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390ea94c22a698c7981e96e"
+  },
+  "title": "JW Anderson",
+  "description": "logo-print belt bag",
+  "url": "https://cdn-images.farfetch-contents.com/18/38/25/96/18382596_40048873_1000.jpg",
+  "stock": 43,
+  "category": [
+    "bags"
+  ],
+  "price": 400,
+  "size": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390eaf9c22a698c7981e970"
+  },
+  "title": "Saint Laurent",
+  "description": "Puffer small velvet shoulder bag",
+  "url": "https://cdn-images.farfetch-contents.com/18/75/35/63/18753563_42490581_1000.jpg",
+  "stock": 7,
+  "category": [
+    "bags"
+  ],
+  "price": 260,
+  "size": [],
+  "__v": 0
+}]

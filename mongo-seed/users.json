@@ -1,0 +1,22 @@
+[
+  {
+    "_id": {
+      "$oid": "63c54428f5c110fc697828db"
+    },
+    "email": "test@gmail.com",
+    "name": "test",
+    "password": "$2a$08$ZlAfPFktDC4VoJaBRi3Y6eExIc58zSMA05JnbubeRmeBof6uE4m1e",
+    "products": [],
+    "isAdmin": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1673872424560"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1673872424560"
+      }
+    }
+  }
+]
