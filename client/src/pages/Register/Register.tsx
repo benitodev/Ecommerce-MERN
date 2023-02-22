@@ -7,39 +7,30 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { userSchema, defaultValues } from '../../schemas/user.schema';
 import { useRegisterMutation } from '../../redux/register';
 import { RegisterRequest } from '../../redux/register/register.type';
-import Form, { FormType } from '../../components/forms/Form';
+import Form from '../../components/forms/Form';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { FormState, FormTypes, initialForStatus } from '../../components/forms';
+import { useFormSubmit } from '../../hooks';
+
+export type FormRegisterValues = {
+  name: string;
+  email: string;
+  password: string;
+};
 
 const Register = () => {
-  const [register, data] = useRegisterMutation();
-  const navigate = useNavigate();
-  const {
-    handleSubmit,
-    reset,
-    formState: { errors },
-    control,
-  } = useForm({
-    defaultValues,
-    resolver: yupResolver(userSchema),
+  const { onSubmit, control, formStatus } = useFormSubmit({
+    formType: FormTypes.REGISTER,
   });
 
-  useEffect(() => {
-    console.log(data.isSuccess);
-    if (data.isSuccess) {
-      navigate('/login');
-    }
-  }, [data.isSuccess]);
-
-  const onSubmit = handleSubmit((user) => {
-    register(user);
-  });
   return (
     <Form
       control={control}
       title="Register"
       onSubmit={onSubmit}
-      type={FormType.REGISTER}
+      type={FormTypes.REGISTER}
+      status={formStatus}
     />
   );
 };

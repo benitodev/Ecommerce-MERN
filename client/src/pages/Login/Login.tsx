@@ -5,31 +5,27 @@ import { loginSchema } from '../../schemas/user.schema';
 import { useForm } from 'react-hook-form';
 import { setCredentials } from '../../redux/login/authSlice';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatchHook, useAuthHook } from '../../hooks';
+import { useAppDispatch, useAuth, useFormSubmit } from '../../hooks';
+import { useEffect, useState } from 'react';
+import { FormState, FormTypes, initialForStatus } from '../../components/forms';
+
+export type FormLoginValues = { email: string; password: string };
 
 const Login = () => {
-  const [login, data] = useLoginMutation();
-  const dispatch = useAppDispatchHook();
-  const user = useAuthHook();
-  const navigate = useNavigate();
-  console.log(user);
-  const {
-    handleSubmit,
-    reset,
-    formState: { errors },
-    control,
-  } = useForm({
-    defaultValues: { email: '', password: '' },
-    resolver: yupResolver(loginSchema),
+  const { onSubmit, control, formStatus, isSuccess } = useFormSubmit({
+    formType: FormTypes.LOGIN,
   });
-
-  const onSubmit = handleSubmit((user) => {
-    login(user)
-      .then((res: any) => dispatch(setCredentials(res.data)))
-      .then(() => navigate('/shop'));
-  });
-
-  console.log(data);
-  return <Form title="Login" control={control} onSubmit={onSubmit} />;
+  const user = useAuth(isSuccess);
+  console.log(isSuccess, user);
+  return (
+    <>
+      <Form
+        title="Login"
+        control={control}
+        onSubmit={onSubmit}
+        status={formStatus}
+      />
+    </>
+  );
 };
 export default Login;
