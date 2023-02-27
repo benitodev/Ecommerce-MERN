@@ -12,10 +12,11 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "types": ["cypress", "node"]
   },
-  "include": ["src"],
+  "include": ["src", "cypress", "src/context"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
