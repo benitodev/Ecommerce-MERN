@@ -5,4 +5,6 @@ export enum USER_ENDPOINTS {
   UPDATE_USER = '/:id',
   LOGIN = '/login',
   DELETE = '/:id',
+  REFRESH_TOKEN = '/refresh',
+  LOGOUT = '/logout',
 }
