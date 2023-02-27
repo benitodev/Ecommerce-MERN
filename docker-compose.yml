@@ -48,6 +48,8 @@ services:
       - ecommerce_db
     ports:
       - 5000:5173
+    environment:
+      - VITE_API_PORT=3002
     stdin_open: true
     tty: true
 
