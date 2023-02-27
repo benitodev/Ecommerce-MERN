@@ -1,4 +1,4 @@
-import { useAuthHook } from '../../hooks';
+import { useAuth } from '../../hooks';
 import { Cart, ProductCartRef, ProductItem } from '../../models';
 import { useCartQuery } from '../../redux/cart/cartSlice';
 import BasketList from './components/BasketList';
@@ -12,14 +12,15 @@ import {
   TitleContainer,
 } from './styled-components/ShoppingBag.styled';
 const ShoppingBag = () => {
-  const auth = useAuthHook();
+  const auth = useAuth();
   const { user } = auth;
   const { data, isError } = useCartQuery(user.id);
   const products: ProductCartRef[] = data?.cart.products!;
   const summaryArray = data?.cart.products!.map((obj) => {
-    const { product } = obj;
-    return product.price;
+    const { product, quantity } = obj;
+    return product.price * quantity;
   });
+  console.log(summaryArray);
   return (
     <Container>
       <BagContainer>
