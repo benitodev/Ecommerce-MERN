@@ -5,22 +5,17 @@ import {
   QuantityContainer,
 } from '../styled-components/quantityProduct.styled';
 import { useContext, useEffect, useReducer, useState } from 'react';
-import { useQuantityHook } from '../../../hooks';
-import { OptionsSelectedContext, UserContext } from '../context/OptionsContext';
-import { OptionActions } from '../../../reducers/OptionsReducer';
+import { useQuantity } from '../../../hooks';
+import { OptionsContext } from '../../../context/OptionsContext';
 
 const pointerStyle = { cursor: 'pointer' };
 
-interface Props {
-  distpatch: React.Dispatch<OptionActions>;
-}
-const QuantityProduct = ({ distpatch }: Props) => {
-  const { subtract, quantity, add } = useQuantityHook();
-
+const QuantityProduct = ({ idObject }: { idObject: string }) => {
+  const { subtract, quantity, add } = useQuantity();
+  const { setOptions } = useContext(OptionsContext);
   useEffect(() => {
-    distpatch({
-      type: 'add',
-      payload: { key: 'quantity', value: quantity },
+    setOptions((items) => {
+      return { ...items, quantity };
     });
   }, [quantity]);
   return (
