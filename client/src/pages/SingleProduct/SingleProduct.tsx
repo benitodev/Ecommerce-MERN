@@ -16,10 +16,11 @@ import {
 import FormInputSelect from '../../components/forms/FormInputSelect';
 import AddToBag from './components/AddToBag';
 import { useUpdateCartMutation } from '../../redux/cart/updateCartSlice';
-import { useAuthHook } from '../../hooks';
+import { useAuth } from '../../hooks';
 import { useContext, useReducer, useState } from 'react';
-import { OptionsSelectedContext, UserContext } from './context/OptionsContext';
 import { OptionsReducer } from '../../reducers/OptionsReducer';
+import { OptionsContext } from '../../context/OptionsContext';
+import { useCartQuery } from '../../redux/cart/cartSlice';
 
 export interface Options {
   size: string;
@@ -28,31 +29,30 @@ export interface Options {
 }
 
 const SingleProduct = () => {
+  const { user } = useAuth();
   const { id } = useParams();
   const { data } = useProductQuery(id as string);
-  const [state, distpatch] = useReducer(OptionsReducer, {
-    color: 'red',
-    size: 'S',
-    quantity: 1,
-  });
+  const { refetch } = useCartQuery(user?.id);
+  const { options, setOptions } = useContext(OptionsContext);
 
   const product = data?.product;
-  const { user } = useAuthHook();
   const [updateCart, dataCart] = useUpdateCartMutation();
 
-  const addProductToBag = () => {
+  const addProductToBag = async () => {
     if (product && Object.keys(product).length !== 0 && user.id) {
       console.log(user.id);
       const { size, stock, ...productForCart } = { ...product };
-      if (state) {
-        updateCart({
+
+      if (options) {
+        await updateCart({
           type: 'add',
           userId: user.id,
           product: productForCart,
-          color: state.color,
-          size: state.size,
-          quantity: state.quantity,
+          color: options.color ?? 'red',
+          size: options.size ?? 'S',
+          quantity: options.quantity ?? 1,
         });
+        refetch();
       }
     }
   };
@@ -78,19 +78,14 @@ const SingleProduct = () => {
                 <FilterColor color="pink" />
               </ColorContainer>
               <FormInputSelect
-                optionKey="size"
-                distpatch={distpatch}
+                id={product.id}
                 label="Size"
                 elements={product.size as string[]}
                 styles={{ width: '60%' }}
               />
             </ProductOptions>
 
-            <AddToBag
-              distpatch={distpatch}
-              addProductToBag={addProductToBag}
-              product={product}
-            />
+            <AddToBag addProductToBag={addProductToBag} product={product} />
           </InfoContainer>
         </Container>
       )}

@@ -2,9 +2,7 @@ import { Button } from '@mui/material';
 import QuantityProduct from './QuantityProduct';
 import FavoriteButton from './FavoriteButton';
 import { AddContainer } from '../styled-components/AddtoBag.styled';
-import { useAppDispatchHook, useQuantityHook } from '../../../hooks';
-import { useContext, useEffect } from 'react';
-import { OptionActions } from '../../../reducers/OptionsReducer';
+import { useAppDispatch, useQuantity } from '../../../hooks';
 import useAuth from '../../../hooks/useAuth.hook';
 import { useNavigate } from 'react-router-dom';
 import { PUBLIC_ROUTES } from '../../../models/routes';
@@ -13,14 +11,13 @@ import { Product } from '../../../models';
 
 interface Props {
   addProductToBag: () => void;
-  distpatch: React.Dispatch<OptionActions>;
   product: Product;
 }
 
-const AddToBag = ({ addProductToBag, distpatch, product }: Props) => {
+const AddToBag = ({ addProductToBag, product }: Props) => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const cartDistpatch = useAppDispatchHook();
+  const cartDistpatch = useAppDispatch();
   const wishListProduct = () => {
     if (user.id === '') {
       navigate('/login');
@@ -37,7 +34,7 @@ const AddToBag = ({ addProductToBag, distpatch, product }: Props) => {
   };
   return (
     <AddContainer>
-      <QuantityProduct distpatch={distpatch} />
+      <QuantityProduct idObject={product.id} />
       <Button
         onClick={handleClick}
         variant="outlined"
