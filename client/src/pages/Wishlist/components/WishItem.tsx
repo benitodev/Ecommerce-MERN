@@ -17,12 +17,12 @@ import {
 } from '../styled-components/wishItem';
 import CloseIcon from '@mui/icons-material/Close';
 import { removeToWishList } from '../../../redux/wishlist/wishlistSlice';
-import { useAppDispatchHook } from '../../../hooks';
+import { useAppDispatch } from '../../../hooks';
 interface Props {
   item: Product;
 }
 const WishItem = ({ item }: Props) => {
-  const wishDistpatch = useAppDispatchHook();
+  const wishDistpatch = useAppDispatch();
 
   const handleDeleteItem = () => {
     console.log(item.id);

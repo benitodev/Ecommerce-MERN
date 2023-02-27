@@ -1,5 +1,5 @@
-import { useWishlistHook } from '../../hooks';
-import useAppDispatch from '../../hooks/useAppDispatch';
+import { useWishlist } from '../../hooks';
+import useAppDispatch from '../../hooks/useAppDispatch.hook';
 import WishItem from './components/WishItem';
 import {
   Container,
@@ -10,7 +10,7 @@ import {
 } from './styled-components/wishlist';
 
 const Wishlist = () => {
-  const wishlist = useWishlistHook();
+  const wishlist = useWishlist();
   const itemsCount = wishlist.length;
   return (
     <Container>
