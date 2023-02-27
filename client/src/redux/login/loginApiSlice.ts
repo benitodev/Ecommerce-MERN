@@ -2,8 +2,13 @@ import { User } from '../../models';
 import { apiSlice } from '../api/apiSlice';
 
 export interface LoginResponse {
-  user: User;
+  user: {
+    id: string;
+    name: string;
+    isAdmin: boolean;
+  };
   accessToken: string;
+  refreshToken: string;
 }
 export interface LoginRequest {
   email: string;

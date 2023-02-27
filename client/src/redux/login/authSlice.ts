@@ -11,14 +11,11 @@ const key = 'auth';
 const EmptyAuthState: LoginResponse = {
   user: {
     id: '',
-    email: '',
     name: '',
-    products: [],
     isAdmin: false,
-    createdAt: '',
-    updatedAt: '',
   },
   accessToken: '',
+  refreshToken: '',
 };
 const authSlice = createSlice({
   name: 'auth',
@@ -35,7 +32,7 @@ const authSlice = createSlice({
       persistLocalStorage<LoginResponse>(key, newCredentials);
       return newCredentials;
     },
-    clearCredentials: (state, action) => {
+    clearCredentials: () => {
       clearLocalStorage(key, sessionStorage);
       return EmptyAuthState;
     },
@@ -44,6 +41,9 @@ const authSlice = createSlice({
 
 export const selectCurrentUser = (state: RootState) =>
   state.auth as LoginResponse;
+
+export const selectCurrentUserToken = (state: RootState) =>
+  state.auth.accessToken as LoginResponse;
 
 export const { clearCredentials, setCredentials, updateCredentials } =
   authSlice.actions;
