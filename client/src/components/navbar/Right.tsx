@@ -14,7 +14,6 @@ const Right = () => {
   const { data } = useCartQuery(user?.id);
   const dispatch = useAppDispatch();
   const cartItems = data?.cart?.products.length;
-  console.log(cartItems)
   const handleLogout = () => {
     dispatch(clearCredentials());
   };

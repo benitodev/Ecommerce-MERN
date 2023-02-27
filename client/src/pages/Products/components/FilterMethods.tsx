@@ -3,9 +3,6 @@ import { Container, Title } from '../styled-components/FilterMethods';
 import { Box, Typography } from '@mui/material';
 import FormInputSelect from '../../../components/forms/FormInputSelect';
 import { CategoryTypes, Size } from '../../../models';
-import { useEffect, useReducer } from 'react';
-import { OptionsReducer } from '../../../reducers/OptionsReducer';
-import { OptionKeys } from '../../../context/OptionsContext';
 import { useNavigate } from 'react-router-dom';
 
 const marks = [
@@ -28,16 +25,7 @@ const prices = ['Newest', 'Asc', 'Desc'];
 
 const FilterMethods = () => {
   const navigate = useNavigate();
-  const [state, distpatch] = useReducer(OptionsReducer, {
-    color: 'red',
-    size: '',
-    quantity: 1,
-    category: '',
-    price: '',
-  });
-  useEffect(() => {
-    if (state.category !== '') navigate(`/shop/${state.category}`);
-  }, [state.category]);
+  
   return (
     <Container>
       <Box
@@ -56,16 +44,7 @@ const FilterMethods = () => {
         }}
       >
         <Title>Price</Title>
-        {/* <Slider
-          defaultValue={30}
-          step={10}
-          marks
-          min={10}
-          max={110}
-          sx={{ width: '250px' }}
-          valueLabelDisplay="auto"
-          valueLabelFormat={(number) => `${number}$`}
-        /> */}
+      
         <FormInputSelect
           styles={{ minWidth: '110px' }}
           label="Size"
