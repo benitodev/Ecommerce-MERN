@@ -6,10 +6,10 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link } from 'react-router-dom';
 import { Product } from '../../models';
-import { useAppDispatchHook } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 import { addToWishlist } from '../../redux/wishlist/wishlistSlice';
 const ProductItem = ({ product }: { product: Product }) => {
-  const distpatch = useAppDispatchHook();
+  const distpatch = useAppDispatch();
 
   const wishListProduct = () => {
     console.log('wishlist product');
