@@ -8,3 +8,14 @@ export interface User extends Document {
   products: Array<Product>;
   isAdmin: boolean;
 }
+
+export interface RegisterRequest {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface LoginRequest {
+  name: string;
+  password: string;
+}
