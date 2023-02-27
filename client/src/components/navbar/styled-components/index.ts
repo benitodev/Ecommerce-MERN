@@ -8,3 +8,5 @@ export const MenuItem = styled.div`
   color: black;
   ${mobile({ fontSize: '12px', marginLeft: '10px' })}
 `;
+
+export const Span = styled.div``;

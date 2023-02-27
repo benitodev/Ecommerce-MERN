@@ -1,18 +1,23 @@
 import { Badge } from '@mui/material';
 import Box from '@mui/material/Box';
-import { MenuItem } from './styled-components';
+import { MenuItem, Span } from './styled-components';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { useMemo } from 'react';
 import useAuth from '../../hooks/useAuth.hook';
 import { useCartQuery } from '../../redux/cart/cartSlice';
+import { useAppDispatch } from '../../hooks';
+import { clearCredentials } from '../../redux/login/authSlice';
 
 const Right = () => {
   const { user } = useAuth();
-  const { data } = useCartQuery(user.id);
-  const numberOfProductCart = data?.cart.products.length;
-
+  const { data } = useCartQuery(user?.id);
+  const dispatch = useAppDispatch();
+  const cartItems = data?.cart?.products.length;
+  console.log(cartItems)
+  const handleLogout = () => {
+    dispatch(clearCredentials());
+  };
   return (
     <Box
       sx={{
@@ -22,12 +27,15 @@ const Right = () => {
         justifyContent: 'flex-end',
       }}
     >
-      <Link to="/register">
-        <MenuItem>REGISTER</MenuItem>
-      </Link>
       <MenuItem>
-        <Link to="/login">SIGN IN</Link>
+        <Link to="/register">REGISTER</Link>
       </MenuItem>
+
+      <MenuItem>
+        {!user.id && <Link to="/login">SIGN IN</Link>}
+        {user.id && <Span onClick={handleLogout}>LOGOUT</Span>}
+      </MenuItem>
+
       <MenuItem>
         <Link to="/wishlist" color="black">
           <Badge>
@@ -38,7 +46,7 @@ const Right = () => {
         </Link>
 
         <Link to="/basket">
-          <Badge badgeContent={numberOfProductCart} color={'success'}>
+          <Badge badgeContent={cartItems} color={'success'}>
             <ShoppingCartIcon sx={{ fontSize: '32px' }} />
           </Badge>
         </Link>
