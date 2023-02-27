@@ -4,16 +4,18 @@ import TextField from '@mui/material/TextField';
 interface Props {
   name: string;
   label: string;
-  control: Control;
+  control: any;
+  dataTest?: string;
 }
 
-const FormInputText = ({ name, label, control }: Props) => {
+const FormInputText = ({ name, label, control, dataTest }: Props) => {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <TextField
+          data-cy={dataTest}
           helperText={error ? error.message : null}
           size="small"
           error={!!error}
