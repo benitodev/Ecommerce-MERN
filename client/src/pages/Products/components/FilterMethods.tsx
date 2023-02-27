@@ -5,7 +5,7 @@ import FormInputSelect from '../../../components/forms/FormInputSelect';
 import { CategoryTypes, Size } from '../../../models';
 import { useEffect, useReducer } from 'react';
 import { OptionsReducer } from '../../../reducers/OptionsReducer';
-import { OptionKeys } from '../../SingleProduct/context/OptionsContext';
+import { OptionKeys } from '../../../context/OptionsContext';
 import { useNavigate } from 'react-router-dom';
 
 const marks = [
@@ -44,18 +44,8 @@ const FilterMethods = () => {
         sx={{ display: 'flex', justifyContent: 'space-between', gap: '20px' }}
       >
         <Title>Filter Products:</Title>
-        <FormInputSelect
-          optionKey={OptionKeys.CATEGORY}
-          label="Category"
-          distpatch={distpatch}
-          elements={categories}
-        />
-        <FormInputSelect
-          optionKey={OptionKeys.SIZE}
-          label="Size"
-          distpatch={distpatch}
-          elements={size as string[]}
-        />
+        <FormInputSelect label="Category" elements={categories} />
+        <FormInputSelect label="Size" elements={size as string[]} />
       </Box>
       <Box
         sx={{
@@ -78,9 +68,7 @@ const FilterMethods = () => {
         /> */}
         <FormInputSelect
           styles={{ minWidth: '110px' }}
-          optionKey={OptionKeys.PRICE}
           label="Size"
-          distpatch={distpatch}
           elements={prices}
         />
       </Box>

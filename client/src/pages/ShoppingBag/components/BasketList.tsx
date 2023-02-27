@@ -7,6 +7,8 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import ProductBasket from './BasketProduct';
 import { useUpdateCartMutation } from '../../../redux/cart/updateCartSlice';
+import { useAuth } from '../../../hooks';
+import { useCartQuery } from '../../../redux/cart/cartSlice';
 
 interface Props {
   product: Product;
@@ -17,13 +19,16 @@ interface Props {
 
 const BasketList = ({ product, quantity, id, userId }: Props) => {
   const [removeProduct, data] = useUpdateCartMutation();
+  const { user } = useAuth();
+  const { refetch } = useCartQuery(user.id);
   console.log(data.isError);
-  const handleDeleteCart = () => {
-    removeProduct({
+  const handleDeleteCart = async () => {
+    await removeProduct({
       type: 'remove',
       userId,
       productId: id,
     });
+    refetch();
   };
   const productProps = {
     id,
