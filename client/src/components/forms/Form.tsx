@@ -4,22 +4,20 @@ import FormInputText from './FormInputText';
 import Button from '@mui/material/Button';
 import { FormContainer } from '../../styled-components/Form';
 import { Control } from 'react-hook-form/dist/types';
-
-export enum FormType {
-  LOGIN = 'login',
-  REGISTER = 'register',
-}
+import { FormLoginValues } from '../../pages/Login/Login';
+import ErrorForm from './StatusForm';
+import { FormRegisterValues } from '../../pages/Register/Register';
+import { FormState, FormTypes } from './Form.types';
 
 interface Props {
-  control: Control;
+  control: Control<FormLoginValues | FormRegisterValues>;
   title: string;
+  status: FormState;
   onSubmit: () => Promise<void>;
-  type?: FormType;
+  type?: FormTypes;
 }
 
-const formType = FormType.REGISTER;
-
-const Form = ({ control, title, onSubmit, type }: Props) => {
+const Form = ({ control, title, onSubmit, type, status }: Props) => {
   return (
     <Box
       style={{
@@ -30,15 +28,35 @@ const Form = ({ control, title, onSubmit, type }: Props) => {
       }}
     >
       <FormTitle style={{ textAlign: 'center' }}>{title}</FormTitle>
-      <FormContainer>
-        {type === FormType.REGISTER && (
-          <FormInputText label="Name" name="name" control={control} />
+      {status.message && (
+        <ErrorForm status={status.err}>{status.message}</ErrorForm>
+      )}
+      <FormContainer data-cy="login-form">
+        {type === FormTypes.REGISTER && (
+          <FormInputText
+            dataTest="name-input"
+            label="Name"
+            name="name"
+            control={control}
+          />
         )}
 
-        <FormInputText label="Email" name="email" control={control} />
-        <FormInputText label="Password" name="password" control={control} />
+        <FormInputText
+          dataTest="email-input"
+          label="Email"
+          name="email"
+          control={control}
+        />
+        <FormInputText
+          dataTest="password-input"
+          label="Password"
+          name="password"
+          control={control}
+        />
 
-        <Button onClick={onSubmit}>Submit</Button>
+        <Button id="send-login" onClick={onSubmit}>
+          Submit
+        </Button>
       </FormContainer>
     </Box>
   );
